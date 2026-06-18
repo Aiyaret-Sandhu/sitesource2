@@ -5,16 +5,23 @@
     <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
 </head>
 <body style="background:#0a0a0c; margin:0; display:flex; justify-content:center; align-items:center; height:100vh;">
+
     <div id="flash-container" style="width:800px; height:600px;"></div>
+
     <script>
         window.addEventListener("DOMContentLoaded", () => {
+            // 1. Initialize the Ruffle Player instance
             const ruffle = window.RufflePlayer.newest();
             const player = ruffle.createPlayer();
+            
+            // 2. Inject the player canvas into our page layout
             document.getElementById("flash-container").appendChild(player);
             
-            // We tell Ruffle to read the text data of THIS VERY PAGE as the flash game array!
+            // 3. CRITICAL: Pass the exact current browser page address as the media source.
+            // This forces <SITE> and <MEDIA> in your tracking logs to be 100% identical.
             player.load(window.location.href);
         });
     </script>
+
 </body>
 </html>
