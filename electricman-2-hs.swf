@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Electric Man 2</title>
+    <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
+</head>
+<body style="background:#0a0a0c; margin:0; display:flex; justify-content:center; align-items:center; height:100vh;">
+    <div id="flash-container" style="width:800px; height:600px;"></div>
+    <script>
+        window.addEventListener("DOMContentLoaded", () => {
+            const ruffle = window.RufflePlayer.newest();
+            const player = ruffle.createPlayer();
+            document.getElementById("flash-container").appendChild(player);
+            
+            // We tell Ruffle to read the text data of THIS VERY PAGE as the flash game array!
+            player.load(window.location.href);
+        });
+    </script>
+</body>
+</html>
