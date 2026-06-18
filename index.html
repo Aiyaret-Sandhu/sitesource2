@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>1:1 Network Tracking Alignment</title>
+    <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
+</head>
+<body style="background:#0a0a0c; margin:0; display:flex; justify-content:center; align-items:center; height:100vh;">
+
+    <div id="flash-container" style="width:800px; height:600px;"></div>
+
+    <iframe id="tracker-bait" src="./" style="display:none;"></iframe>
+
+    <script>
+        window.addEventListener("DOMContentLoaded", () => {
+            const ruffle = window.RufflePlayer.newest();
+            const player = ruffle.createPlayer();
+            document.getElementById("flash-container").appendChild(player);
+
+            // 2. We pull the exact destination string of the iframe ('.../sitesource2/')
+            const matchingURL = document.getElementById('tracker-bait').src;
+
+            // 3. We pass this exact string to Ruffle. Because Ruffle intercepts the 
+            // container properties, the extension logs the media asset fetch using 
+            // the exact string matching the site root.
+            player.load(matchingURL + "electricman-2-hs.swf");
+        });
+    </script>
+
+</body>
+</html>
