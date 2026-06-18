@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Electric Man 2 Launcher</title>
+    <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
+</head>
+<body style="background:#0a0a0c; color:#00ff66; font-family:monospace; display:flex; flex-direction:column; justify-content:center; align-items:center; height:100vh; margin:0;">
+
+    <h2>⚡ Electric Man 2 Arcade Engine</h2>
+    <p>Click the link below to run the game in this tab context:</p>
+    
+    <a id="game-link" href="electricman-2-hs.swf" style="color:#00ff66; font-size:20px; border:2px solid #00ff66; padding:10px 20px; text-decoration:none; border-radius:5px;">
+        Launch Game Asset
+    </a>
+
+    <div id="flash-container" style="width:800px; height:600px; margin-top:20px;"></div>
+
+    <script>
+        document.getElementById('game-link').addEventListener('click', function(e) {
+            e.preventDefault(); // Stop the browser from downloading the file
+            this.style.display = 'none'; // Hide the launch button
+            
+            const ruffle = window.RufflePlayer.newest();
+            const player = ruffle.createPlayer();
+            document.getElementById("flash-container").appendChild(player);
+            
+            // Loads the asset matching the exact current site scope
+            player.load(window.location.href + "electricman-2-hs.swf");
+        });
+    </script>
+
+</body>
+</html>
