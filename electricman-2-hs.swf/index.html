@@ -14,14 +14,14 @@
             const player = ruffle.createPlayer();
             document.getElementById("flash-container").appendChild(player);
 
-            // This grabs the current folder URL path: ".../electricman-2-hs.swf/"
+            // This grabs the current folder URL path: ".../game/"
             let currentURL = window.location.href;
             if (!currentURL.endsWith('/')) {
                 currentURL += '/';
             }
 
-            // We load the exact game file sitting right next to this HTML file inside the folder
-            player.load(currentURL + "electricman-2-hs.swf");
+            // We request "game" relative to the folder, matching the exact URL structure!
+            player.load(currentURL + "game");
         });
     </script>
 
